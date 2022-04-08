@@ -1,0 +1,26 @@
+<%= form_with(model: @blog, local: true, url: choose_new_or_edit) do |form| %>
+  <% if @blog.errors.any? %>
+    <div id="error_explanation">
+      <h2>Vous devez entrer de caractères</h2>
+    </div>
+  <% end %>
+  <div class="blog_title">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div class="blog_description">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+  <%= form.label :image %>
+  <%= form.file_field :image %>
+</div>
+
+<br>
+  <div class="actions">
+    <%= form.submit "Poster le nouveau Blog" %>
+  </div>
+<% end %>
+<%= link_to "Revenir à l'écran de la liste des blogs", blogs_path %>

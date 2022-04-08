@@ -1,0 +1,13 @@
+<div class="box">
+  <%= image_tag "image1.jpg", size: '350x80' %>
+  <span class="now">LA PAGE D'ACCUEIL DE MON FACEBOOK_CLONE </span>
+</div>
+<br><br>
+<h2>Veuillez vous connecter ou inscrivez vous en cliquant sur Sign up en haut de la page</h2><br><br>
+<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.submit "Log in" %>
+<% end %>

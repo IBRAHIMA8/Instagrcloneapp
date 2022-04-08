@@ -1,0 +1,49 @@
+<div class="box">
+  <%= image_tag "image1.jpg", size: '350x80' %>
+  <span class="now">LA PAGE D'ACCUEIL DE MON FACEBOOK_CLONE </span>
+</div>
+<div class="bold_border"></div>
+<h1>LISTE DE MES BLOGS</h1>
+<p id="notice"><%= notice %></p>
+
+<table>
+    <tr>
+      <td class="img"><%= image_tag "image2.jpg", size: '15x15', class: "acc_pic" %></td>
+      <td class="name_and_content"><span class="acc_name">Voici mon profil Facebook</span></td>
+    </tr>
+</table>
+
+<table>
+  <thead>
+    <tr>
+<th colspan="2">Voici mes blogs</th>
+   </tr>
+<tr>
+      <th>Title</th>
+      <th>Description</th>
+
+    </tr>
+  </thead>
+<button type="button"><%= link_to 'Publier un nouveau Blog', new_blog_path %></button>
+  <tbody>
+    <% @blogs.each do |blog| %>
+      <table>
+        <tr>
+          <td><%= blog.user.name %>
+              <%= blog.created_at.try(:strftime," %m mois %d jour ") %>
+          </td>
+          <td><%= link_to 'Vérifiez les détails', blog_path(blog.id) %></td>
+          <td><%= link_to "Modifier le blog", edit_blog_path(blog.id), data: { confirm: 'Voulez vous vraiment le modifier？' } %></td>
+          <td><%= link_to "Supprimer le blog", blog_path(blog.id), method: :delete ,data: { confirm: 'Voulez vous vraiment le supprimer？' } %></td>
+
+        </tr>
+      </table>
+   <td><%= blog.description %>
+       <% if blog.image.file.nil? %>
+       <% else %>
+       <%= image_tag blog.image.url %>
+       <% end %>
+   </td>
+    <% end %>
+  </tbody>
+</table>

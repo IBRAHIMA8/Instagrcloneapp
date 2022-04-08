@@ -1,0 +1,27 @@
+<h3>Aimeriez-vous publier ce Blog ?</h3>
+<%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
+
+ <p>
+   <strong>Title:</strong>
+   <%= @blog.title %>
+   <%= form.hidden_field :title %>
+ </p>
+ <p>
+   <strong>Description:</strong>
+   <%= @blog.description %>
+   <%= form.hidden_field :description %>
+ </p>
+
+ <p>
+   <strong>Image:</strong>
+   <%= image_tag (@blog.image.url) if @blog.image && @blog.image.url %>
+   <%= form.hidden_field :image_cache %>
+ </p>
+
+
+ <%= form.submit "PUBLIER" %>
+ <% end %>
+ <%= form_with(model: @blog, url: new_blog_path, local: true, method: "get") do |form| %>
+ <%= form.hidden_field :image_cache %>
+ <%= form.submit "RETOUR", name: 'Back' %>
+<% end %>
