@@ -20,7 +20,7 @@ class BlogsController < ApplicationController
     @blog = current_user.blogs.build(blog_params)
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to blogs_path, notice: "Blog créé avec succès. Allez en bas de page pour d'autres poste" }
+        format.html { redirect_to blogs_path, notice: "Blog créé avec succès. Allez en bas de page pour d'autres poste." }
         format.json { render :show, status: :created, location: @blog }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -45,7 +45,7 @@ class BlogsController < ApplicationController
     @blog.destroy
 
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: "Blog suppremé avec succès." }
+      format.html { redirect_to blogs_url, notice: "Blog supprimé avec succès." }
       format.json { head :no_content }
     end
   end
