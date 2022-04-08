@@ -1,49 +1,90 @@
-<div class="box">
-  <%= image_tag "image1.jpg", size: '350x80' %>
-  <span class="now">LA PAGE D'ACCUEIL DE MON FACEBOOK_CLONE </span>
-</div>
-<div class="bold_border"></div>
-<h1>LISTE DE MES BLOGS</h1>
-<p id="notice"><%= notice %></p>
+<header>
+  <table>
+    <tr>
+      <td><%= image_tag "image1.jpg", size: '1300x300', class: 'fakebook-logo' %></td>
+    </tr>
+  </table>
+</header>
+
+<main>
+<h1><div class="discover">Veuillez profiter de Facebook à travers ses raccourcis</div></h1>
 
 <table>
-    <tr>
-      <td class="img"><%= image_tag "image2.jpg", size: '15x15', class: "acc_pic" %></td>
-      <td class="name_and_content"><span class="acc_name">Voici mon profil Facebook</span></td>
-    </tr>
-</table>
-
-<table>
-  <thead>
-    <tr>
-<th colspan="2">Voici mes blogs</th>
-   </tr>
-<tr>
-      <th>Title</th>
-      <th>Description</th>
-
-    </tr>
-  </thead>
-<button type="button"><%= link_to 'Publier un nouveau Blog', new_blog_path %></button>
-  <tbody>
-    <% @blogs.each do |blog| %>
-      <table>
+  <div class="search-img"><%= image_tag "Search.png", size: '100x50', class: 'search-png' %></div>
+  <div class="main-block">
+   <div class="main-block-left">
+  <br>
+  <div class="left-box-unfocus">
+    <%= image_tag "messenger.jpg", size: '30x30' %>
+    <a href ="https://web.facebook.com/messages?_rdc=1&_rdr" target="_blank"<span>Messenger</span></a>
+  </div>
+  <br>
+  <div class="left-box-focus">
+    <%= image_tag "actualites.jpg", size: '30x30' %>
+    <a href="https://fr-fr.facebook.com/formedia/tools/feed"<span>Actualités</span></a>
+  </div>
+  <br>
+  <div class="left-box-unfocus-alt">
+    <%= image_tag "movie.jpg", size: '30x30' %>
+    <a href ="https://web.facebook.com/watch?_rdc=1&_rdr" target="_blank"<span>Regarder</span></a>
+  </div>
+  <br>
+  <div class="left-box-unfocus-alt">
+    <%= image_tag "groupe.jpg", size: '30x30' %>
+    <a href="https://https://web.facebook.com/search/top?q=groupe%20facebook&_rdc=1&_rdr" target="_blank"<span>Group</span></a>
+  </div>
+  <br>
+  <div class="left-box-unfocus-alt">
+    <%= image_tag "events.jpg", size: '30x30' %>
+    <a href="https://web.facebook.com/events/500904354938438/?acontext=%7B%22event_action_history%22%3A[%7B%22mechanism%22%3A%22lov_feed%22%2C%22surface%22%3A%22bookmark%22%7D]%2C%22ref_notif_type%22%3Anull%7D" target="_blank"<span>Evenement</span></a>
+  </div>
+  <br>
+  <div class="left-box-unfocus-alt">
+    <%= image_tag "donation.jpg", size: '30x30' %>
+    <a href="https://www.facebook.com/search/top/?q=donation" target="_blank"<span>Donation</span></a>
+  </div>
+  <br>
+  <div class="left-box-unfocus-alt">
+    <%= image_tag "amis.png", size: '30x30' %>
+    <a href="https://www.facebook.com/friends" target="_blank"<span>Liste d'amis</span></a>
+  </div>
+  <br>
+  </div>
+  <div class="main-block-center">
+  </table>
+  <h1><div class="discover">Cliquer sur le lien ci-dessous pour poster vos blogs et images</div></h1>
+    <table>
+      <thead>
         <tr>
-          <td><%= blog.user.name %>
-              <%= blog.created_at.try(:strftime," %m mois %d jour ") %>
-          </td>
-          <td><%= link_to 'Vérifiez les détails', blog_path(blog.id) %></td>
-          <td><%= link_to "Modifier le blog", edit_blog_path(blog.id), data: { confirm: 'Voulez vous vraiment le modifier？' } %></td>
-          <td><%= link_to "Supprimer le blog", blog_path(blog.id), method: :delete ,data: { confirm: 'Voulez vous vraiment le supprimer？' } %></td>
-
+  <th colspan="2">Voici les blogs poster</th>
+   </tr>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
         </tr>
-      </table>
-   <td><%= blog.description %>
-       <% if blog.image.file.nil? %>
-       <% else %>
-       <%= image_tag blog.image.url %>
-       <% end %>
-   </td>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
+    <button type="button"><%= link_to 'Publier un nouveau Blog', new_blog_path %></button>
+      <tbody>
+        <% @blogs.each do |blog| %>
+          <table>
+            <tr>
+              <td><%= blog.user.name %>
+                  <%= blog.created_at.try(:strftime," %m mois %d jour ") %>
+              </td>
+              <td><%= link_to 'Vérifiez les détails', blog_path(blog.id) %></td>
+              <td><%= link_to "Modifier le blog", edit_blog_path(blog.id), data: { confirm: 'Voulez vous vraiment le modifier？' } %></td>
+              <td><%= link_to "Supprimer le blog", blog_path(blog.id), method: :delete ,data: { confirm: 'Voulez vous vraiment le supprimer？' } %></td>
+
+            </tr>
+          </table>
+       <td><%= blog.description %>
+           <% if blog.image.file.nil? %>
+           <% else %>
+           <%= image_tag blog.image.url %>
+           <% end %>
+       </td>
+        <% end %>
+      </tbody>
+    </table>
+
+  </main>

@@ -1,3 +1,11 @@
+<header>
+  <table>
+    <tr>
+      <td><%= image_tag "image1.jpg", size: '1300x300', class: 'fakebook-logo' %></td>
+    </tr>
+  </table>
+</header>
+
 <h3>Aimeriez-vous publier ce Blog ?</h3>
 <%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
 

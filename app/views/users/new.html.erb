@@ -1,7 +1,11 @@
-<div class="box">
-  <%= image_tag "image1.jpg", size: '350x80' %>
-  <span class="now">LA PAGE D'ACCUEIL DE MON FACEBOOK_CLONE </span>
-</div>
+<header>
+  <table>
+    <tr>
+      <td><%= image_tag "image1.jpg", size: '1300x300', class: 'fakebook-logo' %></td>
+    </tr>
+  </table>
+</header>
+
 <h1>Sign up</h1>
 <% if @user.errors.any? %>
   <div id="error_explanation">
