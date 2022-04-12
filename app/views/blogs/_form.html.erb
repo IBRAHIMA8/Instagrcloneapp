@@ -1,3 +1,20 @@
+<nav class="navbar">
+  <table>
+      <%= image_tag "logo_insta.jpg", size: '150x80', class:"brand-img" %>
+
+        <input type="text" class="search-box" placeholder="search">
+
+          <%= image_tag "messeg.jpg", size: '60x60', class:"icon" %>
+
+          <%= image_tag "plus.jpg", size: '60x60', class:"icon" %>
+
+          <%= image_tag "explor.jpg", size: '60x60', class:"icon" %>
+
+        <%= image_tag "like.jpg", size: '60x60', class:"icon" %>
+
+          <%= image_tag "acc.jpg", size: '60x60', class:"icon" %>
+  </table>
+</nav>
 <header>
   <table>
     <tr>
@@ -23,8 +40,11 @@
   </div>
 
   <div class="field">
-  <%= form.label :image %>
+  <%= form.label :image, "Image" %>
+  <br>
+  <%= image_tag(@blog.image.url) if @blog.image && @blog.image.url %>
   <%= form.file_field :image %>
+  <%= form.hidden_field :image_cache %>
 </div>
 
 <br>
@@ -32,4 +52,4 @@
     <%= form.submit "Poster le nouveau Blog" %>
   </div>
 <% end %>
-<%= link_to "Revenir à l'écran de la liste des blogs", blogs_path %>
+<%= link_to "Revenir à l'écran de la liste des blogs", blogs_path %>|

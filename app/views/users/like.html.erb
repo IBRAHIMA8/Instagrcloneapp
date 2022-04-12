@@ -1,0 +1,69 @@
+<nav class="navbar">
+  <table>
+      <%= image_tag "logo_insta.jpg", size: '150x80', class:"brand-img" %>
+
+        <input type="text" class="search-box" placeholder="search">
+
+          <%= image_tag "messeg.jpg", size: '60x60', class:"icon" %>
+
+          <%= image_tag "plus.jpg", size: '60x60', class:"icon" %>
+
+          <%= image_tag "explor.jpg", size: '60x60', class:"icon" %>
+
+        <%= image_tag "like.jpg", size: '60x60', class:"icon" %>
+
+          <%= image_tag "acc.jpg", size: '60x60', class:"icon" %>
+  </table>
+</nav>
+<header>
+  <table>
+    <tr>
+      <td><%= image_tag "image1.jpg", size: '1300x300', class: 'fakebook-logo' %></td>
+    </tr>
+  </table>
+</header>
+
+
+<main>
+<h1>Mes Favoris </h1>
+<br>
+<br>
+<br>
+<% @favorites.each do |favorite| %>
+<table>
+  <tr>
+    <td>Poster Par<%= link_to "#{favorite.blog.user.name}", user_path(favorite.blog.user.id) %></td>
+    <td><%= link_to 'details', blog_path(favorite.blog.id) %></td>
+  </tr>
+  <tr>
+    <td>
+      <% if favorite.blog.image.file.nil? %>
+        <% else %>
+        <%= image_tag favorite.blog.image.url %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= favorite.user.created_at.try(:strftime,"%D") %>
+      <%= favorite.blog.description %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <% @favorite = current_user.favorites.find_by(blog_id: favorite.blog.id) %>
+    <% if @favorite.present? %>
+    <%= link_to 'Supprimer', favorite_path(id: @favorite.id), method: :delete %>
+      <% else %>
+    <%= link_to 'favoris', favorites_path(blog_id: favorite.blog.id), method: :post%>
+    <% end %>
+    </td>
+  </tr>
+  <br>
+  <br>
+  <br>
+</table>
+<% end %>
+<br>
+<br>
+</main>

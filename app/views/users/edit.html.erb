@@ -1,0 +1,39 @@
+<nav class="navbar">
+  <table>
+      <%= image_tag "logo_insta.jpg", size: '150x80', class:"brand-img" %>
+
+        <input type="text" class="search-box" placeholder="search">
+
+          <%= image_tag "messeg.jpg", size: '60x60', class:"icon" %>
+
+          <%= image_tag "plus.jpg", size: '60x60', class:"icon" %>
+
+          <%= image_tag "explor.jpg", size: '60x60', class:"icon" %>
+
+        <%= image_tag "like.jpg", size: '60x60', class:"icon" %>
+
+          <%= image_tag "acc.jpg", size: '60x60', class:"icon" %>
+  </table>
+</nav>
+<header>
+  <table>
+    <tr>
+      <td><%= image_tag "image1.jpg", size: '1300x300', class: 'fakebook-logo' %></td>
+    </tr>
+  </table>
+</header>
+
+<main>
+<%= form_with(model: @user, local: true, url: user_path(@user.id)) do |f| %>
+  <br>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <p>Adress Email: <%= @user.email %></p>
+  <%= f.label :'Photo de profil' %>
+  <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
+  <%= f.file_field :image %>
+  <%= f.hidden_field :image_cache %>
+  <%= f.submit "Edite" %>
+<% end %>
+</main>

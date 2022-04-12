@@ -1,0 +1,10 @@
+<h1>Votre demande est terminée !</h1>
+<div>
+  <div>
+    <%= image_tag(@contact.image.url) if @contact.image && @contact.image.url %>
+  </div>
+  <div>
+    <h4>Confirmation of inquiry contents</h4>
+    <%= @contact.description %>
+  </div>
+</div>
