@@ -31,5 +31,4 @@ Rails.application.configure do
   end
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.smtp_settings = { address: "https://stark-atoll-20349.herokuapp.com/" }
 end
