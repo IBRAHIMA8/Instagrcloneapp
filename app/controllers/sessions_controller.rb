@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   def new
   end
+
   def create
     user = User.find_by(email: params[:session][:email].downcase)
       if user && user.authenticate(params[:session][:password])
@@ -9,8 +10,9 @@ class SessionsController < ApplicationController
       else
         flash.now[:danger] = 'adresse e-mail ou mot de passe incorrect'
       render :new
-   end
+    end
   end
+
   def destroy
     session.delete(:user_id)
     flash[:notice] = 'Déconnecté'

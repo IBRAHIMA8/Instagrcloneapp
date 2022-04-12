@@ -1,6 +1,7 @@
 class ContactMailer < ApplicationMailer
-  def contact_mail(contact, current_user_info)
-   @contact = contact
-   mail to: @contact_email, subject: "E-mail de confirmation de demande"
+  default from: 'hadi.ibrahima8@gmail.com'
+  def contact_mail(contact, current_user)
+      @contact = contact
+   mail to: current_user.email, subject: "E-mail de retour de votre image postée"
  end
 end

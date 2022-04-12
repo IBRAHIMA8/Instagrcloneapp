@@ -1,21 +1,14 @@
 <nav class="navbar">
   <table>
-      <%= image_tag "logo_insta.jpg", size: '150x80', class:"brand-img" %>
-
-        <input type="text" class="search-box" placeholder="search">
-
-          <%= image_tag "messeg.jpg", size: '60x60', class:"icon" %>
-
-          <%= image_tag "plus.jpg", size: '60x60', class:"icon" %>
-
-          <%= image_tag "explor.jpg", size: '60x60', class:"icon" %>
-
-        <%= image_tag "like.jpg", size: '60x60', class:"icon" %>
-
-          <%= image_tag "acc.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "logo_insta.jpg", size: '150x80', class:"brand-img" %>
+    <input type="text" class="search-box" placeholder="search">
+    <%= image_tag "messeg.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "plus.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "explor.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "like.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "acc.jpg", size: '60x60', class:"icon" %>
   </table>
 </nav>
-
 <header>
   <table>
     <tr>
@@ -23,7 +16,6 @@
     </tr>
   </table>
 </header>
-
 
 <div style="text-align: center; ">
 <h2>Enregistrez vous en bas ou cliquez sur login en haut de page pour vous connectez</h2>
@@ -42,7 +34,6 @@
   </div>
 <% end %>
 
-
 <%= form_with(model: @user, local: true) do |f| %>
 <%= f.label :name, 'Nom Du Compte:' %>
   <p class="hey"><%= f.text_field :name %><br></p>
@@ -56,5 +47,4 @@
   <br>
   <p><%= f.submit "Créer un compte" %></p>
 <% end %>
-
 </div>

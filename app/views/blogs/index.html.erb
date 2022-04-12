@@ -1,23 +1,14 @@
 <nav class="navbar">
   <table>
-      <%= image_tag "logo_insta.jpg", size: '150x80', class:"brand-img" %>
-
-        <input type="text" class="search-box" placeholder="search">
-
-          <%= image_tag "messeg.jpg", size: '60x60', class:"icon" %>
-
-          <%= image_tag "plus.jpg", size: '60x60', class:"icon" %>
-
-          <%= image_tag "explor.jpg", size: '60x60', class:"icon" %>
-
-        <%= image_tag "like.jpg", size: '60x60', class:"icon" %>
-
-        <%= image_tag "sauv.jpg", size: '60x60', class:"icon" %>
-
-          <%= image_tag "acc.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "logo_insta.jpg", size: '150x80', class:"brand-img" %>
+    <input type="text" class="search-box" placeholder="search">
+    <%= image_tag "messeg.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "plus.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "explor.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "like.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "acc.jpg", size: '60x60', class:"icon" %>
   </table>
 </nav>
-
 <header>
   <table>
     <tr>
@@ -30,7 +21,6 @@
 <br><br>
   <h1><div class="discover">Cliquer sur le lien ci-dessous pour poster vos blogs et images</div></h1>
   <button type="button"><%= link_to 'Publier un nouveau Blog', new_blog_path %></button>
-
 
   <h2>Voici les blogs poster</h2>
   <% @blogs.each do |blog| %>
@@ -45,44 +35,38 @@
                   <%= image_tag current_user.image.url, class: 'login_user_img' %>
                 <% end %>
               </div>
-
-                <div class="login_user_name">
-                  <p class="contributer">
-                    <%= link_to "#{current_user.name}", user_path(current_user.id), class: 'contributer' %>
-                  </p>
-
-
-                <div class="main_box_menu">
+              <div class="login_user_name">
+                <p class="contributer">
+                  <%= link_to "#{current_user.name}", user_path(current_user.id), class: 'contributer' %>
+                </p>
+              <div class="main_box_menu">
                   <%= link_to 'Voir le poste', blog_path(blog.id) %>
                   <% if current_user.id == blog.user.id %>
                   <td><%= link_to "Modifier le blog", edit_blog_path(blog.id), data: { confirm: 'Voulez vous vraiment le modifier？' } %></td>
                   <td><%= link_to "Supprimer le blog", blog_path(blog.id), method: :delete ,data: { confirm: 'Voulez vous vraiment le supprimer？' } %></td>
-                </div>
               </div>
-
-            </td>
+            </div>
+          </td>
             <% end %>
           </tr>
 
+          <tr>
+            <th>Poster par</th>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Image</th>
+          </tr>
 
           <tr>
-  <th>Poster par</th>
-  <th>Date</th>
-  <th>Title</th>
-  <th>Description</th>
-  <th>Image</th>
-  </tr>
-
-<tr>
-<td><%= blog.user.name %></td>
-<td><%= blog.created_at.try(:strftime," %y year %m mois %d jour ") %></td>
-
- <td><%= blog.title%></td>
-   <td><%= blog.description %></td>
-   <td><% if blog.image.file.nil? %></td>
-     <% else %>
-   <td><%= image_tag blog.image.url %></td>
-   <% end %>
+            <td><%= blog.user.name %></td>
+            <td><%= blog.created_at.try(:strftime," %y year %m mois %d jour ") %></td>
+            <td><%= blog.title%></td>
+            <td><%= blog.description %></td>
+            <td><% if blog.image.file.nil? %></td>
+              <% else %>
+            <td><%= image_tag blog.image.url %></td>
+     <% end %>
 
 
           <tr>
@@ -91,46 +75,34 @@
               <%= image_tag "coeur.jpg", size: '30x30', class:"icon" %>
               <%= image_tag "comment2.jpg", size: '30x30', class:"comment" %>
               <% @favorite = current_user.favorites.find_by(blog_id: blog.id) %>
-             <% if @favorite.present? %>
-               <%= link_to favorite_path(id: @favorite.id), method: :delete do %>
-                 <%= image_tag "save1.jpg", size: '30x30', class: 'save1' %>
+              <% if @favorite.present? %>
+              <%= link_to favorite_path(id: @favorite.id), method: :delete do %>
+              <%= image_tag "save1.jpg", size: '30x30', class: 'save1' %>
                <% end %>
                <% else %>
                <%= link_to favorites_path(blog_id: blog.id), method: :post do%>
               <%= image_tag "save2.jpg", size: '30x30', class: 'save2' %>
                <% end %>
-             <% end %>
-
+               <% end %>
               <p class="upload_date"><%= blog.user.created_at.try(:strftime,"%D") %></p>
             </div>
             </td>
           </tr>
-
         </table>
       </div>
       <br>
       <br>
       <% end %>
-      <br>
-      <br>
-
-
-
+      <br><br>
       <div class="stories_box">
         <span>QUELQUES ACTUALITES POUR VOUS !</span>
         <div class="recommend_box_left">
-<h2>Instagram : le fil d’actualité par ordre chronologique est enfin disponible</h2>
+          <h2>Instagram : le fil d’actualité par ordre chronologique est enfin disponible</h2>
               <%= image_tag 'instagram-feed-chronologique-2022.jpg', class: 'actuality_img' %>
-            </div>
+        </div>
 <br><br><br>
-
-            <div class="recommend_box_left">
-    <h2>Résultats présidentielle 2022 : entre "choc" et "seum", le regard "inquiet" de la presse étrangère sur l'élection en France</h2>
-                  <%= image_tag 'fran.jpg', class: 'franc_img' %>
-
-          </div>
-
-
-
-
-  </main>
+        <div class="recommend_box_left">
+          <h2>Résultats présidentielle 2022 : entre "choc" et "seum", le regard "inquiet" de la presse étrangère sur l'élection en France</h2>
+            <%= image_tag 'fran.jpg', class: 'franc_img' %>
+        </div>
+</main>

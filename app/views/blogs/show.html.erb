@@ -1,18 +1,12 @@
 <nav class="navbar">
   <table>
-      <%= image_tag "logo_insta.jpg", size: '150x80', class:"brand-img" %>
-
-        <input type="text" class="search-box" placeholder="search">
-
-          <%= image_tag "messeg.jpg", size: '60x60', class:"icon" %>
-
-          <%= image_tag "plus.jpg", size: '60x60', class:"icon" %>
-
-          <%= image_tag "explor.jpg", size: '60x60', class:"icon" %>
-
-        <%= image_tag "like.jpg", size: '60x60', class:"icon" %>
-
-          <%= image_tag "acc.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "logo_insta.jpg", size: '150x80', class:"brand-img" %>
+    <input type="text" class="search-box" placeholder="search">
+    <%= image_tag "messeg.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "plus.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "explor.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "like.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "acc.jpg", size: '60x60', class:"icon" %>
   </table>
 </nav>
 <header>
@@ -22,9 +16,6 @@
     </tr>
   </table>
 </header>
-
-
-
 <main>
   <p id="notice"><%= notice %></p>
   <p>
@@ -37,14 +28,11 @@
   </p>
 <p class="upload_date"><%= @blog.user.created_at.try(:strftime,"%D") %></p>
   <br>
-
   <p id="notice"><%= notice %></p>
-
   <p>
     <strong>Image:</strong>
     <%= image_tag @blog.image.url %>
   </p>
-
   <p>
     <% unless @blog.user_id == current_user.id %>
     <% if @favorite.present? %>
@@ -54,11 +42,7 @@
     <% end %>
   <% end %>
   </p>
-
   <td><%= link_to "Modifier le blog", edit_blog_path(@blog), data: { confirm: 'Voulez vous vraiment le modifier？' } %></td>   |
-
    <td><%= link_to "Supprimer le blog", blog_path(@blog), method: :delete ,data: { confirm: 'Voulez vous vraiment le supprimer？' } %></td>   |
-    
   <%= link_to 'Back', blogs_path %>
-
 </main>

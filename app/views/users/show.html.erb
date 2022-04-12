@@ -1,18 +1,12 @@
 <nav class="navbar">
   <table>
-      <%= image_tag "logo_insta.jpg", size: '150x80', class:"brand-img" %>
-
-        <input type="text" class="search-box" placeholder="search">
-
-          <%= image_tag "messeg.jpg", size: '60x60', class:"icon" %>
-
-          <%= image_tag "plus.jpg", size: '60x60', class:"icon" %>
-
-          <%= image_tag "explor.jpg", size: '60x60', class:"icon" %>
-
-        <%= image_tag "like.jpg", size: '60x60', class:"icon" %>
-
-          <%= image_tag "acc.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "logo_insta.jpg", size: '150x80', class:"brand-img" %>
+    <input type="text" class="search-box" placeholder="search">
+    <%= image_tag "messeg.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "plus.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "explor.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "like.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "acc.jpg", size: '60x60', class:"icon" %>
   </table>
 </nav>
 <header>
@@ -22,7 +16,6 @@
     </tr>
   </table>
 </header>
-
 
 <main>
   <h1>Page de Profil de <%= @user.name %></h1>
@@ -34,10 +27,7 @@
     <% else %>
     <%= image_tag @user.image.url, class: 'profile_img' %>
   <% end %>
-
-  <br>
-  <br>
-
+  <br><br>
   <% if current_user.id == @user.id %>
   <%= link_to "Postes Favoris", like_user_path(current_user.id) %>
     <br>
@@ -45,5 +35,4 @@
     <%= link_to "Se deconnecter", session_path(current_user.id), method: :delete %>|
     <%= link_to 'Back', blogs_path %>
   <% end %>
-  
 </main>

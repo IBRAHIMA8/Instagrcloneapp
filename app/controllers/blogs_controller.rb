@@ -1,7 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
-
   def index
     @blogs = Blog.all.order(id: "desc")
   end
@@ -51,7 +50,6 @@ class BlogsController < ApplicationController
 
   def destroy
     @blog.destroy
-
     respond_to do |format|
       format.html { redirect_to blogs_path, notice: "Blog supprimé avec succès." }
       format.json { head :no_content }
@@ -63,8 +61,6 @@ class BlogsController < ApplicationController
   @blog.user_id = current_user.id
   render :new if @blog.invalid?
   end
-
-
 
   private
   def blog_params

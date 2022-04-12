@@ -1,18 +1,12 @@
 <nav class="navbar">
   <table>
-      <%= image_tag "logo_insta.jpg", size: '150x80', class:"brand-img" %>
-
-        <input type="text" class="search-box" placeholder="search">
-
-          <%= image_tag "messeg.jpg", size: '60x60', class:"icon" %>
-
-          <%= image_tag "plus.jpg", size: '60x60', class:"icon" %>
-
-          <%= image_tag "explor.jpg", size: '60x60', class:"icon" %>
-
-        <%= image_tag "like.jpg", size: '60x60', class:"icon" %>
-
-          <%= image_tag "acc.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "logo_insta.jpg", size: '150x80', class:"brand-img" %>
+    <input type="text" class="search-box" placeholder="search">
+    <%= image_tag "messeg.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "plus.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "explor.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "like.jpg", size: '60x60', class:"icon" %>
+    <%= image_tag "acc.jpg", size: '60x60', class:"icon" %>
   </table>
 </nav>
 <header>
@@ -22,8 +16,6 @@
     </tr>
   </table>
 </header>
-
-
 <%= form_with(model: @blog, local: true, url: choose_new_or_edit) do |form| %>
   <% if @blog.errors.any? %>
     <div id="error_explanation">

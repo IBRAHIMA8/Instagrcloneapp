@@ -11,20 +11,17 @@ class UsersController < ApplicationController
      @user = User.new(user_params)
      puts "create###################################################################"
       if @user.save
-      #redirect_to user_path(@user.id)
       puts "user save###################################################################"
         redirect_to new_session_path
-     else
-       puts @user.errors.full_messages
-
-       #render :new
+      else
+      # puts @user.errors.full_messages
+       render :new
      end
    end
 
   def show
      @user = User.find(params[:id])
   end
-
 
   def edit
   end
@@ -42,7 +39,6 @@ class UsersController < ApplicationController
     @favorites = User.find(current_user.id).favorites.order(id: "desc")
   end
 
-
   private
   def user_params
     params.require(:user).permit(:name, :email, :password,
@@ -53,11 +49,9 @@ class UsersController < ApplicationController
    user = User.find(params[:id])
    if current_user != user
      redirect_to blogs_path
-
      end
    end
     def set_user
     @user = User.find(params[:id])
     end
-
 end
